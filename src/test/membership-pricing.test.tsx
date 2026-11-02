@@ -1,5 +1,6 @@
 // ============= Membership pricing =============
 // Prices are quoted in Indian rupees (INR) per month, never in another currency.
+import { QueryClient } from "@tanstack/react-query";
 import { createMemoryHistory, createRouter, RouterProvider } from "@tanstack/react-router";
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
@@ -24,7 +25,7 @@ function renderMembership() {
   const router = createRouter({
     routeTree,
     history: createMemoryHistory({ initialEntries: ["/membership"] }),
-    context: { queryClient: new (require("@tanstack/react-query").QueryClient)() },
+    context: { queryClient: new QueryClient() },
     defaultPreload: "intent",
   });
   return render(<RouterProvider router={router} />);
