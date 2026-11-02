@@ -19,11 +19,11 @@ export const BENEFITS = [
   "Changing rooms and lockers on site",
 ];
 
-// Example prices — replace with your real pricing.
+// Example prices in INR — replace with your real pricing.
 export const PLANS = [
-  { name: "Basic", price: 29, features: ["Gym floor access", "Off-peak hours", "Locker access"], featured: false },
-  { name: "Standard", price: 45, features: ["Full opening hours", "Unlimited group classes", "Induction session"], featured: true },
-  { name: "Premium", price: 69, features: ["Everything in Standard", "2 PT sessions per month", "Personal programme"], featured: false },
+  { name: "Basic", price: 1499, features: ["Gym floor access", "Off-peak hours", "Locker access"], featured: false },
+  { name: "Standard", price: 2499, features: ["Full opening hours", "Unlimited group classes", "Induction session"], featured: true },
+  { name: "Premium", price: 3999, features: ["Everything in Standard", "2 PT sessions per month", "Personal programme"], featured: false },
 ];
 
 // Placeholder trainer profiles — replace names and bios with your real team.

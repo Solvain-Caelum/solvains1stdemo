@@ -30,7 +30,7 @@ export function PlanGrid() {
             <Card className={cn("flex flex-col", p.featured && "border-primary shadow-glow")}>
               {p.featured && <span className="mb-4 self-start rounded-full bg-primary px-3 py-1 text-xs font-semibold uppercase text-primary-foreground">Most popular</span>}
               <h3 className="text-xl uppercase">{p.name}</h3>
-              <p className="mt-4"><span className="font-display text-5xl">£{p.price}</span><span className="text-muted-foreground"> / month</span></p>
+              <p className="mt-4"><span className="font-display text-5xl">₹{p.price.toLocaleString("en-IN")}</span><span className="text-muted-foreground"> / month</span></p>
               <ul className="mt-6 flex-1 space-y-3">
                 {p.features.map((f) => (
                   <li key={f} className="flex gap-3 text-muted-foreground"><Check size={18} className="mt-0.5 shrink-0 text-primary" />{f}</li>
