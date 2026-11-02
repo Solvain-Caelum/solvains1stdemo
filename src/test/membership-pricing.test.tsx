@@ -21,27 +21,27 @@ Object.defineProperty(globalThis, "IntersectionObserver", {
   value: FakeIntersectionObserver,
 });
 
-function renderMembership() {
+async function renderMembership() {
   const router = createRouter({
     routeTree,
     history: createMemoryHistory({ initialEntries: ["/membership"] }),
     context: { queryClient: new QueryClient() },
-    defaultPreload: "intent",
   });
-  return render(<RouterProvider router={router} />);
+  await router.load();
+  render(<RouterProvider router={router} />);
 }
 
 describe("Membership pricing", () => {
-  it("shows every plan price in rupees", () => {
-    renderMembership();
+  it("shows every plan price in rupees", async () => {
+    await renderMembership();
 
     expect(screen.getByText("₹1,499")).toBeInTheDocument();
     expect(screen.getByText("₹2,499")).toBeInTheDocument();
     expect(screen.getByText("₹3,999")).toBeInTheDocument();
   });
 
-  it("shows no price in another currency", () => {
-    renderMembership();
+  it("shows no price in another currency", async () => {
+    await renderMembership();
 
     expect(screen.queryByText(/£/)).not.toBeInTheDocument();
     expect(screen.queryByText(/US\$/)).not.toBeInTheDocument();
