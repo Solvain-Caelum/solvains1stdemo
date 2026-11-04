@@ -9,7 +9,7 @@ import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 // Static GitHub Pages build: on for `vite build`, off for the dev server and for
 // Lovable's own publish pipeline (which sets LOVABLE_NITRO_PRESET).
 const isBuild = process.argv.includes("build");
-const githubPages = isBuild && !process.env.LOVABLE_NITRO_PRESET && process.env.GITHUB_PAGES !== "false";
+const githubPages = isBuild && !process.env['LOVABLE_NITRO_PRESET'] && process.env['GITHUB_PAGES'] !== "false";
 const BASE = "/solvains1stdemo/";
 
 const STATIC_ROUTES = ["/", "/programmes", "/membership", "/trainers", "/contact"];
