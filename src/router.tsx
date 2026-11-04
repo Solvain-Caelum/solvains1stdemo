@@ -9,6 +9,8 @@ export const getRouter = () => {
     routeTree,
     context: { queryClient },
     scrollRestoration: true,
+    // "preserve" lets static hosts serve /page/ (folder index.html) without a redirect loop.
+    trailingSlash: "preserve",
     defaultPreloadStaleTime: 0,
   });
 
