@@ -6,10 +6,30 @@
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
-export default defineConfig({
-  tanstackStart: {
-    // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
-    // nitro/vite builds from this
-    server: { entry: "server" },
-  },
-});
+// Static GitHub Pages build: on for `vite build`, off for the dev server and for
+// Lovable's own publish pipeline (which sets LOVABLE_NITRO_PRESET).
+const isBuild = process.argv.includes("build");
+const githubPages = isBuild && !process.env['LOVABLE_NITRO_PRESET'] && process.env['GITHUB_PAGES'] !== "false";
+const BASE = "/solvains1stdemo/";
+
+const STATIC_ROUTES = ["/", "/programmes", "/membership", "/trainers", "/contact"];
+
+export default defineConfig(
+  githubPages
+    ? {
+        nitro: false,
+        vite: { base: BASE },
+        tanstackStart: {
+          server: { entry: "server" },
+          router: { basepath: BASE },
+          pages: STATIC_ROUTES.map((path) => ({ path })),
+          prerender: { enabled: true, autoStaticPathsDiscovery: false, crawlLinks: false },
+        },
+      }
+    : {
+        tanstackStart: {
+          // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
+          server: { entry: "server" },
+        },
+      },
+);
