@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Production `vite build` outputs a static GitHub Pages site in `dist/client` under base `/solvains1stdemo/` (nitro off, all public routes prerendered); keep new public routes in STATIC_ROUTES in vite.config.ts. Why: hosting is static GitHub Pages, no server runtime.
