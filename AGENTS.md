@@ -10,3 +10,4 @@
 <!-- LOVABLE:END -->
 
 - Production `vite build` outputs a static GitHub Pages site in `dist/client` under base `/solvains1stdemo/` (nitro off, all public routes prerendered); keep new public routes in STATIC_ROUTES in vite.config.ts. Why: hosting is static GitHub Pages, no server runtime.
+- GitHub Pages CI uses pinned Bun with `bun install --frozen-lockfile` and `bun run build`, retaining Node 22 for build tooling. Why: `bun.lock` is the authoritative dependency lockfile and npm installation does not enforce it.

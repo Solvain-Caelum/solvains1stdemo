@@ -22,8 +22,19 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: npm install
-      - run: npm run build
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.4
+      - name: Install locked dependencies
+        run: bun install --frozen-lockfile
+      - name: Build static site
+        run: bun run build
+      - name: Verify prerendered pages
+        run: |
+          test -f dist/client/index.html
+          for route in programmes membership trainers contact; do
+            test -f "dist/client/$route/index.html"
+          done
       - run: cp dist/client/index.html dist/client/404.html
       - uses: actions/upload-pages-artifact@v3
         with:
