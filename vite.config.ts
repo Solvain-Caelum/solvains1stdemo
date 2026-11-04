@@ -22,7 +22,7 @@ export default defineConfig(
         tanstackStart: {
           server: { entry: "server" },
           router: { basepath: BASE },
-          pages: STATIC_ROUTES.map((path) => ({ path })),
+          pages: STATIC_ROUTES.map((path) => ({ path: path === "/" ? "/" : BASE.slice(0, -1) + path })),
           prerender: { enabled: true, autoStaticPathsDiscovery: false, crawlLinks: false },
         },
       }
