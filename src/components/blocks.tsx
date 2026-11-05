@@ -48,21 +48,24 @@ export function PlanGrid() {
 
 export function TrainerGrid() {
   return (
-    <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <>
+    <div className="grid items-stretch gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {TRAINERS.map((t, i) => (
-        <Reveal key={t.role} delay={i * 100}>
-          <article className="group overflow-hidden rounded-2xl border border-border bg-card">
+        <Reveal key={t.name} delay={i * 100} className="h-full">
+          <article className="group h-full overflow-hidden rounded-2xl border border-border bg-card">
             <div className="overflow-hidden">
-              <img src={t.img} alt={`${t.role} trainer`} loading="lazy" width={768} height={960} className="aspect-[4/5] w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+              <img src={t.img} alt={`${t.name}, fictional ${t.role.toLowerCase()}`} loading="lazy" width={768} height={960} className="aspect-[4/5] w-full object-cover object-top transition-transform duration-700 group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100" />
             </div>
             <div className="p-6">
-              <p className="text-xs font-semibold uppercase tracking-widest text-primary">{t.role}</p>
-              <h3 className="mt-2 text-xl uppercase">{t.name}</h3>
-              <p className="mt-2 text-muted-foreground">{t.bio}</p>
+              <h3 className="text-xl uppercase">{t.name}</h3>
+              <p className="mt-3 text-xs font-semibold uppercase tracking-widest text-primary lg:min-h-9">{t.role}</p>
+              <p className="mt-3 text-muted-foreground">{t.bio}</p>
             </div>
           </article>
         </Reveal>
       ))}
     </div>
+    <p className="mt-6 text-sm text-muted-foreground">Fictional demonstration profiles with illustrative imagery — not actual employees or claims of professional certification.</p>
+    </>
   );
 }

@@ -1,7 +1,7 @@
 import { Dumbbell, HeartPulse, Flame, Users, StretchHorizontal, Timer } from "lucide-react";
 import t1 from "@/assets/trainer-1.jpg";
 import t2 from "@/assets/trainer-2.jpg";
-import t3 from "@/assets/trainer-3.jpg";
+import t3 from "@/assets/ethan-brooks.jpg";
 
 export const PROGRAMMES = [
   { icon: Dumbbell, title: "Strength Training", text: "Structured barbell and free-weight sessions to build strength with good technique." },
@@ -26,9 +26,9 @@ export const PLANS = [
   { name: "Premium", price: 3999, features: ["Everything in Standard", "2 PT sessions per month", "Personal programme"], featured: false },
 ];
 
-// Placeholder trainer profiles — replace names and bios with your real team.
+// Fictional demonstration profiles, not real employees or credentials.
 export const TRAINERS = [
-  { img: t1, name: "[Trainer Name]", role: "Strength & Conditioning", bio: "Placeholder bio. Describe this coach's specialisms and coaching style." },
-  { img: t2, name: "[Trainer Name]", role: "Powerlifting Coach", bio: "Placeholder bio. Describe this coach's specialisms and coaching style." },
-  { img: t3, name: "[Trainer Name]", role: "Mobility & Yoga", bio: "Placeholder bio. Describe this coach's specialisms and coaching style." },
+  { img: t1, name: "Alex Morgan", role: "Head Strength & Conditioning Coach", bio: "Specialises in progressive strength development, structured resistance training and helping members build consistent, sustainable training habits." },
+  { img: t2, name: "Ryan Carter", role: "Personal Fitness Trainer", bio: "Focuses on personalised workout programmes, proper exercise techniques and helping members improve their overall fitness through structured training." },
+  { img: t3, name: "Ethan Brooks", role: "Functional Fitness Coach", bio: "Specialises in functional movement, conditioning, mobility and developing practical strength for everyday performance." },
 ];

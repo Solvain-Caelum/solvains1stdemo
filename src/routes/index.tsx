@@ -4,6 +4,7 @@ import hero from "@/assets/hero.jpg";
 import { ButtonLink, CtaBand, Reveal, Section, meta } from "@/components/site";
 import { PlanGrid, ProgrammeGrid, TrainerGrid } from "@/components/blocks";
 import { BENEFITS } from "@/lib/content";
+import { Achievements } from "@/components/achievements";
 
 export const Route = createFileRoute("/")({
   head: () => meta("Titan Fitness — Train Stronger", "Strength, conditioning and coached classes at Titan Fitness, your local gym."),
@@ -63,7 +64,8 @@ function Index() {
         <TrainerGrid />
       </Section>
 
-      <CtaBand />
+      <Achievements />
+      <div className="pt-20 md:pt-28"><CtaBand /></div>
     </>
   );
 }
