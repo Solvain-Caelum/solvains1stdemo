@@ -26,7 +26,7 @@ const ACHIEVEMENTS = [
 
 export function Achievements() {
   return (
-    <section aria-labelledby="achievements-title" className="border-y border-border bg-card">
+    <section id="awards" aria-labelledby="achievements-title" className="scroll-mt-24 border-y border-border bg-card">
       <div className="mx-auto max-w-7xl px-5 py-20 md:px-8 md:py-28">
         <Reveal>
           <p className="text-xs font-semibold uppercase tracking-[0.25em] text-achievement">Discipline. Dedication. Excellence.</p>

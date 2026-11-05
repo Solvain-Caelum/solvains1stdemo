@@ -16,12 +16,19 @@ export const BUSINESS = {
   ],
 };
 
-const NAV = [
+type NavItem = {
+  to: "/" | "/programmes" | "/membership" | "/trainers" | "/contact";
+  hash?: string;
+  label: string;
+};
+
+const NAV: NavItem[] = [
   { to: "/programmes", label: "Programmes" },
   { to: "/membership", label: "Membership" },
   { to: "/trainers", label: "Trainers" },
+  { to: "/", hash: "awards", label: "Awards" },
   { to: "/contact", label: "Contact" },
-] as const;
+];
 
 export function Logo() {
   return (
@@ -67,8 +74,9 @@ export function Header() {
         <nav className="hidden items-center gap-8 md:flex">
           {NAV.map((n) => (
             <Link
-              key={n.to}
+              key={`${n.to}${n.hash ?? ""}`}
               to={n.to}
+              {...(n.hash ? { hash: n.hash, activeOptions: { includeHash: true } } : {})}
               className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
               activeProps={{ className: "text-primary" }}
             >
@@ -88,7 +96,7 @@ export function Header() {
       {open && (
         <nav className="flex flex-col gap-1 border-t border-border bg-background px-5 py-4 md:hidden">
           {NAV.map((n) => (
-            <Link key={n.to} to={n.to} onClick={() => setOpen(false)} className="py-3 text-lg text-foreground">
+            <Link key={`${n.to}${n.hash ?? ""}`} to={n.to} {...(n.hash ? { hash: n.hash } : {})} onClick={() => setOpen(false)} className="py-3 text-lg text-foreground">
               {n.label}
             </Link>
           ))}
@@ -113,7 +121,7 @@ export function Footer() {
         </div>
         <div className="flex flex-col gap-2 text-sm">
           {NAV.map((n) => (
-            <Link key={n.to} to={n.to} className="text-muted-foreground hover:text-primary">{n.label}</Link>
+            <Link key={`${n.to}${n.hash ?? ""}`} to={n.to} {...(n.hash ? { hash: n.hash } : {})} className="text-muted-foreground hover:text-primary">{n.label}</Link>
           ))}
         </div>
         <div>
